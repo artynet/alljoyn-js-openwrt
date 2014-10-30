@@ -47,23 +47,11 @@ define Package/$(PKG_NAME)-samples/description
 	Sample JavaScript programs that use AllJoyn via alljoyn.js.
 endef
 
-TARGET_CFLAGS := -Wno-all -Wno-error -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast
-# TARGET_CPPFLAGS := -Wno-error 
-
 ifeq ($(CONFIG_DEBUG),y)
   ALLJOYN_BUILD_VARIANT:=debug
 else
   ALLJOYN_BUILD_VARIANT:=release
 endif
-
-#define Build/Prepare
-#	/bin/tar xvf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components=1
-#	mkdir -p $(PKG_BUILD_DIR)/config
-#	mkdir -p $(PKG_BUILD_DIR)/config/obj
-#	cp SConstruct.openwrt $(PKG_BUILD_DIR)
-#	cp SConscript.openwrt $(PKG_BUILD_DIR)/config
-#	cp SConscript.openwrt $(PKG_BUILD_DIR)/config/obj
-#endef
 
 define Build/Configure/Default
 	# Override default to do nothing
