@@ -78,7 +78,7 @@ define Build/InstallDev
 	$(CP) $(PKG_BUILD_DIR)/inc/*.h $(1)/usr/include/ajtcl/
 	$(CP) $(PKG_BUILD_DIR)/target/linux/*.h $(1)/usr/include/ajtcl/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/libajtcl_st.a $(1)/usr/lib/libajtcl.a
+	$(CP) $(PKG_BUILD_DIR)/libajtcl_st.a $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/libajtcl.so $(1)/usr/lib/
 endef
 
