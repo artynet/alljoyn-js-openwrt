@@ -61,7 +61,7 @@ define Build/Compile
 	CROSS_CFLAGS="-I$(STAGING_DIR)/usr/src/duktape/src -I$(STAGING_DIR)/usr/include/ajtcl $(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS)" \
 	CROSS_LINKFLAGS="$(TARGET_LINKFLAGS) $(TARGET_LDFLAGS) -lajtcl_services" \
 	CROSS_PATH=$(TARGET_PATH) \
-	CROSS_PREFIX=mips-openwrt-linux- \
+	CROSS_PREFIX=$(REAL_GNU_TARGET_NAME)- \
 	DUKTAPE_DIST="$(STAGING_DIR)/usr/src/duktape" \
 	scons -C $(PKG_BUILD_DIR) \
 		$(PKG_JOBS) \
