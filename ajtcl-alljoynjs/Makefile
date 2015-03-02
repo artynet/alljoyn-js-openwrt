@@ -1,8 +1,15 @@
+#
+# Copyright (C) Dog Hunter AG 2015
+#
+# This is free software, licensed under the GNU General Public License v2.
+# See /LICENSE for more information.
+#
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ajtcl-alljoynjs
-PKG_REVISION:=5dcbff9081fc48080958b6e2828bdd0ac4597c9f
-PKG_VERSION:=$(PKG_REVISION)
+PKG_REVISION:=3b5674dbe7547e74b65b7e182674af2d705c1686
+PKG_VERSION:=14.12.1
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git

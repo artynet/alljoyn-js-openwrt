@@ -1,5 +1,5 @@
 #
-# Copyright (C) Dog Hunter AG 2014
+# Copyright (C) Dog Hunter AG 2015
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,14 +8,15 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=duktape
-PKG_VERSION:=1.0.2
+PKG_VERSION:=1.1.1
 PKG_RELEASE:=1
+PKG_MD5SUM:=
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=http://duktape.org/
+PKG_SOURCE:=$(PKG_NAME)-master.tar.xz
+PKG_SOURCE_URL:=http://duktape.org/snapshots/
 
 PKG_FILE:="$(STAGING_DIR)/pkginfo/libc.provides"
-PKG_CAT=`cat $(PKG_FILE) | grep libm.so.6` 
+PKG_CAT=`cat $(PKG_FILE) | grep libm.so.6`
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -58,7 +59,7 @@ endef
 
 define Package/duktape/install
 	$(INSTALL_DIR) $(1)/usr/bin/
-	
+
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/duk $(1)/usr/bin/
 endef
 

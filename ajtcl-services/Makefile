@@ -1,17 +1,20 @@
+#
+# Copyright (C) Dog Hunter AG 2015
+#
+# This is free software, licensed under the GNU General Public License v2.
+# See /LICENSE for more information.
+#
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ajtcl-services
-PKG_REVISION:=b86e109c04cda5008dde772f6fe7c27af2ecabcc
-PKG_VERSION:=$(PKG_REVISION)
+PKG_VERSION:=14.12
 PKG_RELEASE:=1
-PKG_MD5SUM:=
+PKG_MD5SUM:=2e39a8c75680a727c7e68e8b283942c2
 
-PKG_SOURCE_PROTO:=git
-
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-src.tar.gz
-PKG_SOURCE_URL:=https://git.allseenalliance.org/gerrit/services/base_tcl.git
-PKG_SOURCE_VERSION:=$(PKG_REVISION)
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE:=base_tcl-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://git.allseenalliance.org/cgit/services/base_tcl.git/snapshot/
+PKG_BUILD_DIR:=$(BUILD_DIR)/base_tcl-$(PKG_VERSION)
 
 # SCons supports parallel builds but does not support make's jobserver
 PKG_BUILD_PARALLEL:=$(if $(CONFIG_PKG_BUILD_USE_JOBSERVER),0,1)
