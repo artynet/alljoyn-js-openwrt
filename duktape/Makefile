@@ -8,11 +8,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=duktape
-PKG_VERSION:=1.0.2
+PKG_VERSION:=1.2.x
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=http://duktape.org/
+# PKG_MD5SUM:=b8a8e4505311e7f2cdd8015dd6cad089
+# PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+
+PKG_SOURCE:=$(PKG_NAME)-master.tar.xz
+PKG_SOURCE_URL:=http://duktape.org/snapshots/
 
 PKG_FILE:="$(STAGING_DIR)/pkginfo/libc.provides"
 PKG_CAT=`cat $(PKG_FILE) | grep libm.so.6` 

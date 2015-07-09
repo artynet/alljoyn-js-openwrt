@@ -1,17 +1,20 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ajtcl
-PKG_REVISION:=8b5adef941184fbeb499577aaa3f6314532c5e4d
-PKG_VERSION:=$(PKG_REVISION)
+PKG_VERSION:=15.04a
 PKG_RELEASE:=1
 PKG_MD5SUM:=
 
-PKG_SOURCE_PROTO:=git
+# PKG_SOURCE_PROTO:=git
+# PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-src.tar.gz
+# PKG_REVISION:=c7246570b10c70913c2b983b5f9353672908f73d
+# PKG_SOURCE_URL:=https://git.allseenalliance.org/gerrit/core/ajtcl.git
+# PKG_SOURCE_VERSION:=$(PKG_REVISION)
+# PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-src.tar.gz
-PKG_SOURCE_URL:=https://git.allseenalliance.org/cgit/core/ajtcl.git
-PKG_SOURCE_VERSION:=$(PKG_REVISION)
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+# PKG_BUILD_DIR:=$(BUILD_DIR)/ajtcl-master
+PKG_SOURCE:=ajtcl-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://git.allseenalliance.org/cgit/core/ajtcl.git/snapshot/
 
 # SCons supports parallel builds but does not support make's jobserver
 PKG_BUILD_PARALLEL:=$(if $(CONFIG_PKG_BUILD_USE_JOBSERVER),0,1)
@@ -26,6 +29,7 @@ define Package/ajtcl/Default
   CATEGORY:=Network
   DEPENDS:=+libopenssl +libpthread +librt
   URL:=http://www.allseenalliance.org
+  TITLE:=The AllJoyn Thin Client Library
   MAINTAINER:=AllSeen Alliance <allseen-core@lists.allseenalliance.org>
 endef
 
@@ -37,7 +41,7 @@ endef
 
 define Package/ajtcl/description
 	AllJoyn Thin Client Library is a basic, low-level C library for developing
-	ad hoc peer-to-peer applications that use the AllJoyn protocol.
+	ad hoc peer-to-peer applications that use the AllJoyn protocol. Revision : c7246570b10c70913c2b983b5f9353672908f73d 
 endef
 
 define Package/ajtcl-samples
@@ -61,10 +65,10 @@ define Build/Configure/Default
 endef
 
 define Build/Compile
-	CROSS_CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) -DOPENWRT_MIPS" \
+	CROSS_CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(FPIC) $(TARGET_CPPFLAGS) -DOPENWRT_MIPS" \
 	CROSS_LINKFLAGS="$(TARGET_LINKFLAGS) $(TARGET_LDFLAGS)" \
 	CROSS_PATH=$(TARGET_PATH) \
-	CROSS_PREFIX=$(REAL_GNU_TARGET_NAME)- \
+	CROSS_PREFIX=mips-openwrt-linux-uclibc- \
 	scons -C $(PKG_BUILD_DIR) \
 		$(PKG_JOBS) \
 		WS=off \
@@ -108,5 +112,6 @@ define Package/ajtcl-samples/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/test/bastress2 $(1)/usr/bin/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,ajtcl))
 $(eval $(call BuildPackage,ajtcl-samples))
