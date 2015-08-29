@@ -10,10 +10,9 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=duktape
 PKG_VERSION:=1.2.x
 PKG_RELEASE:=1
-
 # PKG_MD5SUM:=b8a8e4505311e7f2cdd8015dd6cad089
-# PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 
+# PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE:=$(PKG_NAME)-master.tar.xz
 PKG_SOURCE_URL:=http://duktape.org/snapshots/
 
@@ -55,8 +54,8 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/src
 	$(INSTALL_DIR) $(1)/usr/src/duktape
 	$(INSTALL_DIR) $(1)/usr/src/duktape/src
-	$(CP) $(PKG_BUILD_DIR)/src/duktape.c $(1)/usr/src/duktape/src
-	$(CP) $(PKG_BUILD_DIR)/src/duktape.h $(1)/usr/src/duktape/src
+	$(CP) $(PKG_BUILD_DIR)/src/*.c $(1)/usr/src/duktape/src
+	$(CP) $(PKG_BUILD_DIR)/src/*.h $(1)/usr/src/duktape/src
 endef
 
 define Package/duktape/install
