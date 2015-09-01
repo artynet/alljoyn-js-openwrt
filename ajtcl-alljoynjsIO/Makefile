@@ -26,7 +26,7 @@ PKG_CONFIG_DEPENDS:= \
 include $(INCLUDE_DIR)/package.mk
 
 define Package/$(PKG_NAME)
-  TITLE:=AllJoyn Thin Client - AllJoynJS
+  TITLE:=AllJoyn Thin Client - AllJoynJS for LininoIO
   SECTION:=net
   CATEGORY:=Network
   DEPENDS:=ajtcl +ajtcl-services +duktape
