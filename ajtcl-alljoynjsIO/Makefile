@@ -39,7 +39,7 @@ define Package/$(PKG_NAME)/description
 	AllJoyn Thin Client AllJoynJS binding is a basic, low-level JavaScript
 	interpreter that uses the Duktape embeddable JavaScript engine for developing
 	ad hoc peer-to-peer applications that use the AllJoyn protocol. MASTER Revision
-    with LininoIO bindings.
+    	with LininoIO bindings.
 endef
 
 define Package/$(PKG_NAME)-samples
@@ -64,7 +64,7 @@ define Build/Configure/Default
 endef
 
 define Build/Compile
-    YUN_BUILD=1 \
+    	YUN_BUILD=1 \
 	CROSS_CFLAGS="-I$(STAGING_DIR)/usr/src/duktape/src -I$(STAGING_DIR)/usr/include/ajtcl $(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS)" \
 	CROSS_LINKFLAGS="$(TARGET_LINKFLAGS) $(TARGET_LDFLAGS) -lajtcl_services" \
 	CROSS_PATH=$(TARGET_PATH) \
